@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: reader-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: reader-customer-service
+          uri: lb://READER-CUSTOMER-SERVICE
+          predicates:
+            - Path=/api/v1/customers/**
+        - id: reader-publisher-service
+          uri: lb://READER-PUBLISHER-SERVICE
+          predicates:
+            - Path=/api/v1/publishers/**
+        - id: reader-order-service
+          uri: lb://READER-ORDER-SERVICE
+          predicates:
+            - Path=/api/v1/orders/**
+        - id: reader-product-service
+          uri: lb://READER-PRODUCT-SERVICE
+          predicates:
+            - Path=/api/v1/products/**
+        - id: reader-invoice-service
+          uri: lb://READER-INVOICE-SERVICE
+          predicates:
+            - Path=/api/v1/invoices/**
+        - id: reader-notification-service
+          uri: lb://READER_NOTIFICATION-SERVICE
+          predicates:
+            - Path=/api/v1/notifications/**
+        - id: reader
+          uri: lb://READER
+          predicates:
+            - Path=/api/v1/
+server:
+  port: 8080
+
+  
+

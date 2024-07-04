@@ -1,0 +1,83 @@
+1.Senkron ve Asenkron iletişim nedir örneklerle açıklayın? (5 PUAN)
+    Senkron , bir işlemlerin sırasıyla ve birbirini bekleyerek çalışması olarak tanımlanabilir.Ne kadar hata yönetimi ve kodun
+    takip edilebilirliği açısından avantajlı olsa da işlemler birbirini beklediği için performans sıkıntısı yaşanabilir.
+    Örneğin;
+    function a(){
+    console.log('a');
+    }
+    function b(){
+    console.log('b');
+    }
+    a();
+    b();
+    //Çıktı...
+    a
+    b
+    -------------------------
+    Asenkron, işlemlerin birbirini beklemeden aynı andan çalışması olarak tanımlanabilir. Eşzamanlılık ve performans açısından
+    avantaj sağlasa da kodun karmaşıklığı dezavantaj yaratabilir.
+    Örneğin;
+    console.log("a");
+    setTimeout(function() {
+      console.log("b");
+    }, 2000);
+    console.log("c");
+    //Çıktı...
+    a
+    c
+    b
+
+2.RabbitMQ ve Kafka arasındaki farkları araştırın? (5 PUAN)
+    Kafka ve RabbitMQ, akış işlemede kullanabileceğiniz mesaj kuyruğu sistemleridir. Bir kaynaktan sürekli veri alan ve işleyen
+    bir sensör örnek olabilir.
+    Kafka ve RabbitMQ arasındaki farklılıklardan biri üreticilerin tüketicilere mesaj göndermesinde ortaya çıkar.RabbitMQ,
+    üretici mesajını gönderir ve mesajın hedef tüketiciye ulaşıp ulaşmadığını izler. Kafka üreticileri, tüketicilerin
+    mesajı alıp almadığına bakılmaksızın mesajlar yayınlar.
+    RabbitMQ, karmaşık mesajı basit mimariyle yönlendirir. Buna karşılık Kafka, uygulamaların akış geçmişindeki verileri
+    işlemesine olanak tanıyan dayanıklı bir mesaj aracısı sistemi sunar.
+    Mesaj iletiminde Kafka RabbitMQ'den daha iyi performans gösterir.
+
+3.Docker komutlarını örneklerle araştırın. Aşağıdaki işlemleri gerçekleştirin. (10 PUAN)
+    PostgreSQL Kurulumu
+        docker run --name my_postgres -e POSTGRES_PASSWORD=password -d postgres
+    RabbitMQ Kurulumu
+        docker run --name my_rabbitmq -d rabbitmq
+    Redis Kurulumu
+        docker run --name my_redis -d redis
+    MongoDB Kurulumu
+        docker run --name my_mongodb -d mongo
+
+    my_mongodb, my_postgres, my_rabbitmq, my_redis, password kullanıcıların ihtiyaçlarına göre değişebilir.
+
+
+4.Microservice ve Monotlith mimarilerini kıyaslayın. (10 PUAN)
+    Microservice ve Monotlith mimarileri, yazılım geliştirme ve dağıtımında yaygın olarak kullanılan iki farklı yaklaşımdır.
+
+    Monolithic mimari, bir uygulamada ki bütün fonksiyonalitelerin tek bir çatı altında geliştirilmesidir. Hızlı bir şekilde
+    uygulama geliştirebilir.Yönetilebilirlik ve monitoring kolay olmasına rağmen uygulamanın büyümesi ya da ekip sayısının
+    artması geliştirme ve bakım zorlaşır. Birbirlerine bağımlı olduğundan hatalar birbirini etkileyebilir.
+
+    Microservice, bağımsız olarak çalışan ve birbirleriyle haberleşen  her servisin kendine ait iş mantığının olduğu bireysel
+    servislerdir. Servisler arasında ki iletişim transfer edilecek verilerin niteliğine göre  HTTP, AMQP, TCP, UDP gibi
+    protokoller ile gerçekleşir.Uygulama büyüklüğüne bakılmaksızın yeni özellik eklenmesi ve bakımı kolaydır. Ekipler daha hızlı
+    ve verimli çalışabilirler.Servisler birbirinden bağımsız bir şekilde scale edilebilir. Her servis  farklı dil ve  frameworkler
+    ile yazılabildiği gibi hepsinin kendine ait farklı veritabanı olabilir.
+
+5.API Gateway, Service Discovery, Load Balancer kavramlarını açıklayın. (5 PUAN)
+
+    Gateway, client tarafından servislere gelen istekleri karşılayan yapılardır. Bundan yola çıkarak API Gateway client tarafından
+    istekleri alıp servislere iletir. Bu işlemde client'ın servisler için herhangi bir port bilgisini bilmesine gerek kalmaz.
+    API Gateway dönen sonuçları cacheleyerek maliyetten düşebilir. Servislere gelen istekleri loglayabilir.
+
+    Service Discovery,Microservice mimarisinde servislerin istek yoğunluğuna göre ölçeklendirilmesi, fail olmasına karşı yeniden
+    oluşturma gibi değişken yapıları manipule eden ayrıntılı bir yapıdır.Client-Side Service Discovery ve Server-Side Service Discovery
+    olmak üzere 2 patterni vardır.
+
+    Load Balancer, modern mimarilerinde artan trafiği karşılamak için mevcut kaynakları artırmak yerine yeni sunucu eklenmesi
+    tercih edildiği için kullanılan bir sistemdir.Yükü dağıttıkları sistemlerin sağlıklı olup olmadığını belirli aralıklarla
+    kontrol ederek sağlıklı çalışmayan sunuculara trafiği yönlendirmekten kaçınabilirler. Bu sayede, yük dengeleyiciler
+    sistemlerimizin ölçeklenmesini sağladıkları gibi yüksek erişilebilirliğini sağlamak için de kullanılırlar. Problemli sunucuya
+    yeni istek gönderilmez ve kullanıcıların problemden etkilenmemesi sağlanır.
+
+
+
